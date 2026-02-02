@@ -35,6 +35,31 @@ const BMPyramidsApp = () => {
             🪐 كوكب {i + 1}
           </div>
         ))}
+        <button 
+  style={{
+    marginTop: '30px',
+    padding: '15px 40px',
+    backgroundColor: '#ffd700',
+    color: '#000',
+    fontWeight: 'bold',
+    borderRadius: '30px',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '1.2rem'
+  }}
+  onClick={() => window.Pi.createPayment({
+    amount: 1,
+    memo: "شراء كوكب إمبراطوري جديد",
+    metadata: { planetId: 16 }
+  }, {
+    onReadyForServerApproval: (paymentId) => console.log(paymentId),
+    onReadyForServerCompletion: (paymentId, txid) => console.log(txid),
+    onCancel: (paymentId) => console.log("Cancelled"),
+    onError: (error, paymentId) => console.log(error)
+  })}
+>
+  💎 تفعيل بوابة الدفع (1 Pi)
+</button>
       </div>
 
       <footer style={{ marginTop: '50px', fontSize: '12px' }}>
